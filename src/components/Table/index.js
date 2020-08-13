@@ -1,9 +1,11 @@
 // Dependencies
-import React from "react";
+import React, { useContext } from "react";
 import "./style.css";
+import EmployeeContext from "../../utils/EmployeeContext";
 
 // Table component
-function Table(props) {
+function Table() {
+    const { employee } = useContext(EmployeeContext);
     return (
         <div class="container">
             <table class="table">
@@ -17,17 +19,19 @@ function Table(props) {
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
+                    <tr key={employee.id}>
+                        <th scope="row">
+                            <img alt="employee thumbnail" src={employee.picture} />
+                        </th>
+                        <td>{employee.name}</td>
+                        <td>{employee.phone}</td>
+                        <td>{employee.email}</td>
+                        <td>{employee.dob}</td>
                     </tr>
                 </tbody>
             </table>
         </div>
     );
-
 }
 
 // Export 
