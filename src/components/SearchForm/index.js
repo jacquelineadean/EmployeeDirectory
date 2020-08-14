@@ -12,12 +12,15 @@ function SearchForm(props) {
                         value={props.search}
                         onChange={props.handleInputChange}
                         name="name"
-                        list="results"
+                        list="employees"
                         type="text"
                         className="form-control"
                         placeholder="Search"
                         id="search"
                     />
+                    <button type="submit" onClick={props.handleFormSubmit} className="btn btn-success">
+                        Search
+                    </button>
                 </div>
             </form>
         </div>
