@@ -5,18 +5,19 @@ export default {
     // API call to return 100 random profiles
     getEmployees: function() {
         return axios.get("https://randomuser.me/api/?results=100")
-                .then(res => {
-                    const employees = res.data;
-                    const results = employees.map(employee => {
-                        return {
-                            picture: employee.picture.thumbnail,
-                            name: employee.name,
-                            phone: employee.phone,
-                            email: employee.email,
-                            DOB: employee.dob
-                        };
-                    });
-                    return results;
-                })
+                // .then(res => {
+                //     const employees = res.data.results;
+                //     console.log(employees);
+                //     const results = employees.map(employee => {
+                //         return {
+                //             picture: employee.picture.thumbnail,
+                //             name: `${employee.name.first} ${employee.name.last}`,
+                //             phone: employee.phone,
+                //             email: employee.email,
+                //             DOB: employee.dob.date
+                //         };
+                //     });
+                //     console.log(results);
+                // })
     }
 };

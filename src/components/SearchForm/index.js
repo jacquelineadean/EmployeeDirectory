@@ -3,14 +3,14 @@ import React from "react";
 import "./style.css";
 
 // Search form 
-function SearchForm() {
+function SearchForm(props) {
     return (
-        <div class="container">
+        <div className="container">
             <form className="search">
                 <div className="form-group">
                     <input
-                        // value={props.search}
-                        // onChange={props.handleInputChange}
+                        value={props.search}
+                        onChange={props.handleInputChange}
                         name="name"
                         list="results"
                         type="text"
