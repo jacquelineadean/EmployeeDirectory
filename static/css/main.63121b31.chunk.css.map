@@ -1,0 +1,1 @@
+{"version":3,"sources":["style.css"],"names":[],"mappings":"AAAA,WACI,iBACJ,CAFA,QACI,YAAa,CACb,sBACJ","file":"main.63121b31.chunk.css","sourcesContent":[".search {\n    display: flex;\n    justify-content: center;\n}"]}
