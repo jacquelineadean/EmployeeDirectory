@@ -1,6 +1,6 @@
 {
+  "homepage": "http://jacquelineadean.github.io/EmployeeDirectory/",
   "name": "employeedirectory",
-  "homepage": "https://jacquelineadean.github.io/EmployeeDirectory/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
