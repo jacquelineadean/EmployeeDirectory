@@ -1,5 +1,7 @@
 # Employee Directory
 
+![Home](assets/home.png)
+
 ## Description
 
 The Employee Directory is a React.js application that divides the UI into components, manage component state, and respond to user events. The application utilizes the Random User Generator API to mock an employee directory consisting of 100 employees.
@@ -11,6 +13,8 @@ The user is able to:
   * Search the table for user by name
 
   * Filter the users by first or last name property
+
+View the deployed app [here](https://jacquelineadean.github.io/EmployeeDirectory/)
 
 ## User Story
 ```
