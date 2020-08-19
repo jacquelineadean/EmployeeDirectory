@@ -11,8 +11,8 @@ function Table(props) {
                 <thead className="thead-dark">
                     <tr>
                         <th scope="col">Image</th>
-                        <th scope="col" onClick={() => {props.sortBy("name")}}>First Name</th>
-                        <th scope="col" onClick={() => {props.sortBy("name")}}>Last Name</th>
+                        <th scope="col" onClick={() => {props.sortBy("first")}}>First Name</th>
+                        <th scope="col" onClick={() => {props.sortBy("last")}}>Last Name</th>
                         <th scope="col">Phone</th>
                         <th scope="col">Email</th>
                         <th scope="col">DOB</th>

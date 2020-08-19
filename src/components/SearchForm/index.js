@@ -9,7 +9,7 @@ function SearchForm(props) {
             <form className="search">
                 <div className="form-group">
                     <input
-                        onChange={props.handleInputChange}
+                        onChange={e => props.handleInputChange(e)}
                         type="search"
                         className="form-control"
                         placeholder="Search"

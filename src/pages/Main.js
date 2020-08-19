@@ -8,11 +8,18 @@ import API from "../utils/API";
 // Main page
 class Main extends Component {
     // Set state
-    state = {
-        employees: [],
-        filteredEmployees: [],
-        order: "descend"
-    }
+    constructor(props){
+        super(props);
+        this.state = {
+            employees: [],
+            filteredEmployees: [],
+            order: "descend",
+            sortName: ""
+        }
+
+        this.sortBy = this.sortBy.bind(this);
+    } 
+    
 
     componentDidMount(){
         API.getEmployees().then(res => {
@@ -27,27 +34,43 @@ class Main extends Component {
     handleInputChange = event => {
         const filter = event.target.value;
         console.log(filter);
-        this.setState.filteredEmployees.filter(item => {
-            let values = item.name.first.toLowerCase() + " " + item.name.last.toLowerCase();
+        this.setState.filteredEmployees.filter(employee => {
+            let values = employee.name.first.toLowerCase();
             console.log(filter, values)
             if(values.indexOf(filter.toLowerCase()) !== -1){
-                return item
+                return employee;
             }
         })
     };
         
-    compareBy(key) {
-        return function (a,b) {
-            if (a[key] < b[key]) return -1;
-            if (a[key] > b[key]) return 1;
-            return 0;
+    sortBy(sortName) {
+        let sortedUsers = [];
+        const currentSortName = this.state.sortName;
+        const filteredEmployees = this.state.filteredEmployees;
+        let order = this.state.order;
+        if (currentSortName === sortName) {
+            order = order === "descend" ? "ascend" : "descend"
+            this.sortedUsers = this.compareBy(filteredEmployees, sortName, order);
+        }else{
+            order = "descend"
+            this.sortedUsers = this.compareBy(filteredEmployees, sortName, order);
+            
         }
+        this.setState({filteredEmployees: this.sortedUsers, order: order, sortName: sortName})
+        console.log("Clicked")
     }
 
-    sortBy(key) {
-        let array = [...this.state.filteredEmployees];
-        array.sort(this.compareBy(key));
-        this.setState({filteredEmployees: array})
+    compareBy(objects, field, direction) {
+        console.log(direction);
+        if (direction === "descend"){
+            objects.sort((a,b) => (a.name[field] > b.name[field]) ? 1 : ((b.name[field] > a.name[field]) ? -1 : 0));
+            console.log(objects)
+            console.log(field)
+            return objects;
+        }
+        objects.sort((a,b) => (a.name[field] < b.name[field]) ? 1 : ((b.name[field] < a.name[field]) ? -1 : 0));
+        
+        return objects;
     }
 
     render(){
@@ -58,7 +81,10 @@ class Main extends Component {
                     handleInputChange={this.handleInputChange}
                     filteredEmployees={this.state.filteredEmployees}
                 />
-                <Table results={this.state.filteredEmployees}/>
+                <Table 
+                    sortBy={this.sortBy}
+                    results={this.state.filteredEmployees}
+                />
             </div>
         );
     }
